@@ -24,6 +24,8 @@ import com.example.android.trackmysleepquality.database.SleepDatabaseDao
  * ViewModel for SleepTrackerFragment.
  */
 class SleepTrackerViewModel(
+
+        // we need Application access, to access Strings and other resources
         val database: SleepDatabaseDao,
         application: Application) : AndroidViewModel(application) {
 }
