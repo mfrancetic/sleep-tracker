@@ -46,7 +46,7 @@ class SleepTrackerFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         // Get a reference to the binding object and inflate the fragment views.
-        val binding: FragmentSleepTrackerBinding = DataBindingUtil.inflate(
+        val binding: com.example.android.trackmysleepquality.databinding.FragmentSleepTrackerBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_sleep_tracker, container, false)
 
         // requireNotNull = throws an IllegalArgumentException if the value is null
@@ -68,7 +68,7 @@ class SleepTrackerFragment : Fragment() {
 
         sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.data = it
+                adapter.submitList(it)
             }
         })
 
