@@ -23,6 +23,7 @@ import androidx.room.RoomDatabase
 
 // add all the tables in the list (we only have SleepNight database)
 @Database(entities = [SleepNight::class], version = 1, exportSchema = false)
+// abstract - because Room creates the implementation for us
 abstract class SleepDatabase : RoomDatabase() {
 
     // we can have multiple DAO's

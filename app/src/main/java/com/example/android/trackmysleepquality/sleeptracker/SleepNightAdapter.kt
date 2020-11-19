@@ -3,14 +3,11 @@ package com.example.android.trackmysleepquality.sleeptracker
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.trackmysleepquality.R
-import com.example.android.trackmysleepquality.TextItemViewHolder
 import com.example.android.trackmysleepquality.database.SleepNight
 import com.example.android.trackmysleepquality.databinding.ListItemSleepNightBinding
-import com.example.android.trackmysleepquality.sleeptracker.SleepNightAdapter.ViewHolder.Companion.from
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,7 +17,8 @@ import java.lang.ClassCastException
 private const val ITEM_VIEW_TYPE_HEADER = 0;
 private const val ITEM_VIEW_TYPE_ITEM = 1;
 
-class SleepNightAdapter(val clickListener: SleepNightListener) : androidx.recyclerview.widget.ListAdapter<DataItem, RecyclerView.ViewHolder>(SleepNightDiffCallback()) {
+class SleepNightAdapter(private val clickListener: SleepNightListener) :
+        androidx.recyclerview.widget.ListAdapter<DataItem, RecyclerView.ViewHolder>(SleepNightDiffCallback()) {
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
 
@@ -29,7 +27,7 @@ class SleepNightAdapter(val clickListener: SleepNightListener) : androidx.recycl
         return when (viewType) {
             ITEM_VIEW_TYPE_HEADER -> TextViewHolder.from(parent)
             ITEM_VIEW_TYPE_ITEM -> ViewHolder.from(parent)
-            else -> throw ClassCastException("Unknown viewType ${viewType}")
+            else -> throw ClassCastException("Unknown viewType $viewType")
         }
     }
 

@@ -30,7 +30,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-    }
+        }
     buildTypes {
         release {
             minifyEnabled false
@@ -39,8 +39,8 @@ android {
     }
 
     // Enables data binding.
-    dataBinding {
-        enabled = true
+    buildFeatures{
+        dataBinding true
     }
 
 }
@@ -56,13 +56,14 @@ dependencies {
     implementation "androidx.core:core-ktx:$version_core"
 
     // Room and Lifecycle dependencies
-    implementation "androidx.room:room-runtime:$version_room"
+    implementation 'androidx.room:room-ktx:2.2.5'
     kapt "androidx.room:room-compiler:$version_room"
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
 
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_coroutine"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_coroutine"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 
     // Navigation
     implementation "android.arch.navigation:navigation-fragment-ktx:$version_navigation"
@@ -73,4 +74,3 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
-
